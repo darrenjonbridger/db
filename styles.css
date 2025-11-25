@@ -1,230 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Store - Product Listing</title>
+/* Base styling */
+html {
+    font-size: 100%;
+}
 
-    <!-- Data Layer -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'view_item_list',
-            'pageType': 'productListing',
-            'products': [
-                { 'productID': '1', 'productName': 'Product 1', 'productPrice': 19.99, 'productCategory': 'Category A' },
-                { 'productID': '2', 'productName': 'Product 2', 'productPrice': 29.99, 'productCategory': 'Category B' },
-                { 'productID': '3', 'productName': 'Product 3', 'productPrice': 39.99, 'productCategory': 'Category C' },
-                { 'productID': '4', 'productName': 'Product 4', 'productPrice': 24.99, 'productCategory': 'Category A' },
-                { 'productID': '5', 'productName': 'Product 5', 'productPrice': 14.99, 'productCategory': 'Category B' },
-                { 'productID': '6', 'productName': 'Product 6', 'productPrice': 49.99, 'productCategory': 'Category C' },
-                { 'productID': '7', 'productName': 'Product 7', 'productPrice': 9.99,  'productCategory': 'Category A' },
-                { 'productID': '8', 'productName': 'Product 8', 'productPrice': 59.99, 'productCategory': 'Category B' },
-                { 'productID': '9', 'productName': 'Product 9', 'productPrice': 89.99, 'productCategory': 'Category C' }
-            ]
-        });
-    </script>
+body {
+    font-family: 'Zain', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333; /* Default text color */
+    background-color: #1C9C6F; /* Green background */
+    padding: 20px;
+    font-size: 1rem;
+    margin: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+}
 
-    <!-- Page-specific CSS -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #1C9C6F;
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+    body {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.2rem;
+    }
+}
+
+/* Specific styles for the index page */
+body.index-page {
+    background-color: #1C9C6F; /* Green background */
+    color: #ffffff; /* White text color */
+}
+
+body.index-page main h1 {
+    font-size: 7rem; /* Main heading size */
+    font-weight: 800;
+    color: #ffffff; /* White color for h1 text */
+    line-height: 1.2;
+    margin: 0 0 10px 0; /* Spacing below h1 */
+    padding: 0;
+}
+
+body.index-page main h2,
+body.index-page #epitch p {
+    color: #ffffff; /* White color for specific elements */
+}
+
+body.about-page {
+    background-colour: #56575C; /* Grey background for cv */
+    color: #ffffff; /* White text color */
+}
+
+body.about-page p {
+     font-size: 1.5rem;
+     line-height: 1.8; 
+     color: #000000;
+}
+
+body.about-page nav ul, 
+body.about-page nav li {
+    color: #000000;
+}
+
+body.about-page h1, 
+body.about-page h2, 
+body.about-page h3 {
+    margin-bottom: 15px;
+} 
+body.about-page a {
+    color: #ffffff; /* White color for headings, text, links, and navigation */
+}
+
+body.project-page {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+}
+
+body.project-page h1, 
+body.project-page h2, 
+body.project-page h3, 
+body.project-page p, 
+body.project-page a, 
+body.project-page nav ul, 
+body.project-page nav li {
+    color: #000000; /* Black color for headings, text, links, and navigation */
+}
+
+/* Specific HR styles for different pages */
+body.index-page hr, 
+body.about-page hr {
+    border-color: #ffffff; /* White hr lines */
+}
+
+body.index-page #epitch h3 {
+    padding-top: 0.5rem;
+}
+
+body.project-page hr {
+    border-color: #000000 !important; /* Black hr lines on project page */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start */
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+/* General element styles */
+h1, h2, h3 {
+    color: inherit; /* Inherit color from parent (body) */
+    margin: 0; /* Reset margin for headings */
+}
+
+p {
+    margin: 0 0 10px 0; /* Standard margin below paragraphs */
+    padding: 0;
+}
+
+nav ul {
+    list-style-type: none; /* Remove list bullets */
+    padding: 0;
+}
+
+nav li {
+    display: inline; /* Display navigation links inline */
+    margin-right: 10px; /* Space between links */
+}
+
+section {
+    margin-bottom: 10px; /* Space below sections */
+}
+
+/* Link styles */
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit;
+}
+
+a:link,
+a:visited {
+    color: inherit; /* Maintain same color */
+}
+
+a:hover,
+a:active {
+    color: inherit; /* Prevent color change on hover and active states */
+}
+
+/* Responsive images */
+img {
+    max-width: 100%; /* Ensure images don't exceed the container width */
+    height: auto;   /* Maintain aspect ratio */
+}
+
+/* Adjust image sizing for larger screens */
+@media (min-width: 768px) {
+    img {
+        max-width: 80%; /* Slightly smaller images for medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    img {
+        max-width: 60%; /* Smaller images for large screens */
+    }
+}
+table {
+            width: 50%; /* Set table width to 80% of the container */
+            margin: 20px auto; /* Center the table horizontally */
+            border-collapse: collapse; /* Remove spacing between table cells */
+            font-size: 0.9rem; /* Decrease font size */
+            margin-left: 0; /* Ensure left alignment */
         }
-
-        h1 {
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        /* Product grid */
-        .product-listing-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-        }
-
-        /* Product Card */
-        .product-listing-container .product {
+        th, td {
             border: 1px solid #ddd;
-            padding: 15px;
-            text-align: center;
-            background: white;
-            border-radius: 6px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 8px;
+            text-align: left;
         }
-
-        /* Hover glow */
-        .product-listing-container .product:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 18px rgba(0,0,0,0.15);
-        }
-
-        .product-listing-container .product img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .product-listing-container .product-title {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .product-listing-container .product-info {
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: #444;
-        }
-
-        .product-listing-container .product-price {
-            color: #f60;
-            font-size: 16px;
-            margin: 10px 0 15px 0;
-        }
-
-        .product-listing-container .add-to-cart {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-
-        .product-listing-container .add-to-cart:hover {
-            background-color: #218838;
-        }
-
-        /* Responsive layout */
-        @media (max-width: 900px) {
-            .product-listing-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .product-listing-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            opacity: 0.9;
-            font-size: 14px;
-        }
-    </style>
-
-    <!-- GTM -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NCHR9VDH');</script>
-
-</head>
-<body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCHR9VDH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<h1>Product Listing</h1>
-
-<div class="product-listing-container">
-
-    <!-- Product 1 -->
-    <div class="product">
-        <img src="assets/images/dogga.PNG" alt="Product 1">
-        <div class="product-title">Product 1</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£19.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="product">
-        <img src="assets/images/globe.PNG" alt="Product 2">
-        <div class="product-title">Product 2</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£29.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="product">
-        <img src="assets/images/skates.PNG" alt="Product 3">
-        <div class="product-title">Product 3</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£39.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 4 -->
-    <div class="product">
-        <img src="assets/images/product4.png" alt="Product 4">
-        <div class="product-title">Product 4</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£24.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 5 -->
-    <div class="product">
-        <img src="assets/images/product5.png" alt="Product 5">
-        <div class="product-title">Product 5</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£14.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 6 -->
-    <div class="product">
-        <img src="assets/images/product6.png" alt="Product 6">
-        <div class="product-title">Product 6</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£49.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 7 -->
-    <div class="product">
-        <img src="assets/images/product7.png" alt="Product 7">
-        <div class="product-title">Product 7</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£9.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 8 -->
-    <div class="product">
-        <img src="assets/images/product8.png" alt="Product 8">
-        <div class="product-title">Product 8</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£59.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-    <!-- Product 9 -->
-    <div class="product">
-        <img src="assets/images/product9.png" alt="Product 9">
-        <div class="product-title">Product 9</div>
-        <div class="product-info">Product Info: lorem ipsum...</div>
-        <div class="product-price">£89.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-
-</div>
-
-<footer>
-    © 2025 Test Store — Demo site for tracking experiments
-</footer>
-
-</body>
-</html>
+        th {
+            background-color: #f2f2f2;
